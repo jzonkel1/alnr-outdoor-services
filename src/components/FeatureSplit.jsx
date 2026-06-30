@@ -5,7 +5,9 @@ import { BEFORE_AFTER } from '../data'
 
 // Draggable before/after comparison slider.
 function BeforeAfter() {
-  const [pos, setPos] = useState(50)
+  // Default the handle near the right so visitors mostly see the "before"
+  // and are nudged to slide left to reveal the finished result.
+  const [pos, setPos] = useState(78)
   const ref = useRef(null)
   const dragging = useRef(false)
 
