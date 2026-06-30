@@ -1,0 +1,22 @@
+# dependencies
+node_modules/
+
+# build output
+dist/
+dist-ssr/
+
+# logs
+*.log
+npm-debug.log*
+
+# editor / os
+.DS_Store
+.vscode/
+*.local
+.env
+.env.*
+
+# unused source assets (site uses public/work/ + public/logo.png only)
+public/ALNR/
+public/IMG_*.PNG
+public/work/sidewalk-edge.jpg
