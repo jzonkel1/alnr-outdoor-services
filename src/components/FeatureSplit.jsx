@@ -39,19 +39,18 @@ function BeforeAfter() {
       onTouchMove={onMove}
       onTouchEnd={onUp}
     >
-      {/* After (base) */}
+      {/* After (base) — full frame */}
       <img src={BEFORE_AFTER.after.src} alt="After ALNR service" className="absolute inset-0 h-full w-full object-cover" draggable="false" />
-      <span className="absolute right-4 top-4 rounded-full bg-forest/90 px-3 py-1 font-display text-xs font-700 uppercase tracking-wide text-cream backdrop-blur">
+      <span className="absolute right-4 top-4 z-10 rounded-full bg-forest/90 px-3 py-1 font-display text-xs font-700 uppercase tracking-wide text-cream backdrop-blur">
         {BEFORE_AFTER.after.label}
       </span>
 
-      {/* Before (clipped) */}
-      <div className="absolute inset-0 overflow-hidden" style={{ width: `${pos}%` }}>
+      {/* Before — full frame, revealed left-to-right via clip-path (no resizing) */}
+      <div className="absolute inset-0" style={{ clipPath: `inset(0 ${100 - pos}% 0 0)` }}>
         <img
           src={BEFORE_AFTER.before.src}
           alt="Before ALNR service"
-          className="absolute inset-0 h-full w-full max-w-none object-cover"
-          style={{ width: ref.current ? ref.current.offsetWidth : '100%' }}
+          className="absolute inset-0 h-full w-full object-cover"
           draggable="false"
         />
         <span className="absolute left-4 top-4 rounded-full bg-charcoal/85 px-3 py-1 font-display text-xs font-700 uppercase tracking-wide text-cream backdrop-blur">
