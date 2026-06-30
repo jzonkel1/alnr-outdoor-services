@@ -24,6 +24,7 @@ export const NAV_LINKS = [
   { label: 'Home', href: '#home' },
   { label: 'Services', href: '#services' },
   { label: 'Gallery', href: '#gallery' },
+  { label: 'Reviews', href: '#reviews' },
   { label: 'About', href: '#about' },
   { label: 'Contact', href: '#contact' },
 ]
@@ -110,6 +111,16 @@ export const SERVICE_AREAS = [
   'Annaville',
   'North Padre',
   'Surrounding Coastal Bend',
+]
+
+// ---- Reviews ----
+// PLACEHOLDER content — swap these for real Google reviews once they come in.
+// `REVIEWS_ARE_PLACEHOLDER` shows an honest "sample" note until you set it false.
+export const REVIEWS_ARE_PLACEHOLDER = true
+export const REVIEWS = [
+  { name: 'Sample Review', location: 'Flour Bluff', rating: 5, text: 'Showed up on time, cleaned up everything, and the yard looks better than it has in years. Will be using them every week.' },
+  { name: 'Sample Review', location: 'Calallen', rating: 5, text: 'Honest pricing and they did exactly what they said they would. Hauled off all the brush and left the place spotless.' },
+  { name: 'Sample Review', location: 'Corpus Christi', rating: 5, text: 'Reworked our whole front bed with rock and new plants. Neighbors keep asking who did it. Highly recommend.' },
 ]
 
 // ---- Contact form: service options ----

@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import Icon from './Icons'
 import LeafField from './LeafField'
+import HeroForm from './HeroForm'
 import { BUSINESS, asset } from '../data'
 
 const rise = {
@@ -28,7 +29,8 @@ export default function Hero() {
       <LeafField />
 
       {/* Content */}
-      <div className="relative mx-auto w-full max-w-7xl px-5 pt-28 pb-20 lg:px-8">
+      <div className="relative mx-auto grid w-full max-w-7xl items-center gap-12 px-5 pt-28 pb-24 lg:grid-cols-[1.05fr_minmax(360px,400px)] lg:gap-10 lg:px-8 lg:pb-28">
+        {/* Left: message */}
         <div className="max-w-2xl">
           <motion.div custom={0} variants={rise} initial="hidden" animate="show"
             className="mb-6 inline-flex items-center gap-2.5 rounded-full border border-ember/40 bg-ember/10 px-4 py-1.5 backdrop-blur-sm">
@@ -39,30 +41,35 @@ export default function Hero() {
           </motion.div>
 
           <motion.h1 custom={1} variants={rise} initial="hidden" animate="show"
-            className="font-display text-6xl font-800 uppercase leading-[0.92] text-cream sm:text-7xl lg:text-8xl">
+            className="font-display text-6xl font-800 uppercase leading-[0.92] text-cream sm:text-7xl">
             Your Property.
             <span className="mt-1 block text-ember">Taken Care Of.</span>
           </motion.h1>
 
           <motion.p custom={2} variants={rise} initial="hidden" animate="show"
-            className="mt-7 max-w-xl text-lg leading-relaxed text-cream/85 sm:text-xl">
+            className="mt-6 max-w-xl text-lg leading-relaxed text-cream/85 sm:text-xl [text-shadow:_0_2px_16px_rgba(0,0,0,0.55)]">
             Professional lawn maintenance, landscaping, trailer rentals and dependable
             outdoor services for homeowners across {BUSINESS.city} and the Coastal Bend.
           </motion.p>
 
           <motion.div custom={3} variants={rise} initial="hidden" animate="show"
-            className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <a href="#contact" className="btn-ember text-base">
-              Get Free Estimate <Icon name="arrowRight" className="h-5 w-5" />
-            </a>
+            className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
             <a href="#services" className="btn-ghost text-base">View Services</a>
+            <a href={`tel:${BUSINESS.phoneRaw}`} className="inline-flex items-center gap-2 font-display text-lg font-700 uppercase tracking-wide text-cream/90 transition-colors hover:text-ember">
+              <Icon name="phone" className="h-5 w-5 text-ember" /> {BUSINESS.phone}
+            </a>
           </motion.div>
 
           {/* Tagline */}
           <motion.p custom={4} variants={rise} initial="hidden" animate="show"
-            className="mt-10 font-display text-lg font-600 uppercase tracking-wide text-cream/60">
+            className="mt-8 font-display text-lg font-600 uppercase tracking-wide text-cream/60">
             <span className="text-ember">“</span>{BUSINESS.tagline}<span className="text-ember">”</span>
           </motion.p>
+        </div>
+
+        {/* Right: lead form */}
+        <div className="flex justify-center lg:justify-end">
+          <HeroForm />
         </div>
       </div>
 

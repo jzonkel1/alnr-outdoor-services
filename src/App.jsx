@@ -5,6 +5,7 @@ import Services from './components/Services'
 import WhyChooseUs from './components/WhyChooseUs'
 import FeatureSplit from './components/FeatureSplit'
 import Gallery from './components/Gallery'
+import Reviews from './components/Reviews'
 import About from './components/About'
 import ServiceArea from './components/ServiceArea'
 import FishingBonus from './components/FishingBonus'
@@ -24,6 +25,7 @@ export default function App() {
         <WhyChooseUs />
         <FeatureSplit />
         <Gallery />
+        <Reviews />
         <About />
         <ServiceArea />
         <FishingBonus />

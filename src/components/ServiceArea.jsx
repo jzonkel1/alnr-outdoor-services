@@ -1,18 +1,13 @@
-import { useState } from 'react'
 import Icon from './Icons'
 import Reveal from './Reveal'
 import { SERVICE_AREAS, BUSINESS } from '../data'
 
-// Simplified Texas silhouette (stylized, not survey-accurate).
-const TEXAS_PATH =
-  'M70 40 L150 40 L168 30 L176 44 L230 46 L232 70 L250 78 L256 96 L300 104 ' +
-  'L300 130 L286 150 L292 172 L274 196 L262 188 L250 210 L238 200 L226 232 ' +
-  'L214 226 L206 250 L196 244 L182 226 L150 222 L150 180 L92 176 L92 150 ' +
-  'L70 150 Z'
+// Google Maps embed centered on the Corpus Christi / Coastal Bend service area.
+// Keyless embed — swap the q= value to recenter, or paste a custom embed URL.
+const MAP_SRC =
+  'https://www.google.com/maps?q=Corpus+Christi,+Texas&z=10&output=embed'
 
 export default function ServiceArea() {
-  const [hovered, setHovered] = useState(null)
-
   return (
     <section className="relative bg-charcoal-2 py-24 lg:py-32">
       <div className="absolute inset-0 topo opacity-30" />
@@ -20,30 +15,21 @@ export default function ServiceArea() {
         <div className="grid items-center gap-12 lg:grid-cols-2">
           {/* Map */}
           <Reveal>
-            <div className="relative mx-auto max-w-md">
-              <svg viewBox="0 0 320 270" className="w-full drop-shadow-2xl" role="img" aria-label="Texas service area map">
-                <defs>
-                  <linearGradient id="tx" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stopColor="#355C3A" />
-                    <stop offset="100%" stopColor="#243F28" />
-                  </linearGradient>
-                </defs>
-                <path d={TEXAS_PATH} fill="url(#tx)" stroke="#D77A28" strokeWidth="2.5" strokeLinejoin="round" />
-                <path d={TEXAS_PATH} fill="none" stroke="#ffffff" strokeOpacity="0.06" strokeWidth="6" strokeLinejoin="round" />
-
-                {/* Corpus Christi / Coastal Bend pin (south coast) */}
-                <g transform="translate(225, 205)">
-                  <circle r="16" fill="#D77A28" opacity="0.25">
-                    <animate attributeName="r" values="12;22;12" dur="2.4s" repeatCount="indefinite" />
-                    <animate attributeName="opacity" values="0.35;0;0.35" dur="2.4s" repeatCount="indefinite" />
-                  </circle>
-                  <circle r="7" fill="#F0A94A" stroke="#13160F" strokeWidth="1.5" />
-                  <circle r="2.6" fill="#13160F" />
-                </g>
-              </svg>
-              <div className="mt-4 text-center font-display text-sm font-700 uppercase tracking-[0.2em] text-cream/60">
-                Coastal Bend · South Texas
-              </div>
+            <div className="relative overflow-hidden rounded-3xl border border-white/10 shadow-lift">
+              <iframe
+                title="ALNR Outdoor Services — Corpus Christi service area"
+                src={MAP_SRC}
+                className="h-[340px] w-full sm:h-[420px]"
+                style={{ border: 0, filter: 'grayscale(0.25) contrast(1.05)' }}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
+              />
+              {/* brand frame accent */}
+              <div className="pointer-events-none absolute inset-0 rounded-3xl ring-1 ring-inset ring-ember/20" />
+            </div>
+            <div className="mt-4 text-center font-display text-sm font-700 uppercase tracking-[0.2em] text-cream/60">
+              Coastal Bend · South Texas
             </div>
           </Reveal>
 
@@ -68,13 +54,7 @@ export default function ServiceArea() {
                 {SERVICE_AREAS.map((a) => (
                   <li
                     key={a}
-                    onMouseEnter={() => setHovered(a)}
-                    onMouseLeave={() => setHovered(null)}
-                    className={`flex items-center gap-2 rounded-full border px-4 py-2 font-display text-sm font-600 uppercase tracking-wide transition-all duration-200 ${
-                      hovered === a
-                        ? 'border-ember bg-ember text-ink'
-                        : 'border-white/15 bg-white/5 text-cream/80'
-                    }`}
+                    className="flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 font-display text-sm font-600 uppercase tracking-wide text-cream/80 transition-all duration-200 hover:border-ember hover:bg-ember hover:text-ink"
                   >
                     <Icon name="pin" className="h-4 w-4" />
                     {a}
